@@ -1,0 +1,111 @@
+@startuml Diagrama_Casos_Uso_ComunicaTEA
+
+!define RECTANGLE class
+
+title Diagrama de Casos de Uso - Sistema ComunicaTEA
+
+left to right direction
+
+actor "Criança com TEA" as CRIANCA
+actor "Professor/Terapeuta" as PROFESSOR
+actor "Familiar/Cuidador" as FAMILIAR
+
+rectangle "Sistema ComunicaTEA" {
+    usecase "Acessar Menu Principal" as UC1
+    usecase "Explorar Animais" as UC2
+    usecase "Explorar Emoções" as UC3
+    usecase "Explorar Comidas" as UC4
+    usecase "Explorar Roupas" as UC5
+    usecase "Explorar Objetos do Cotidiano" as UC6
+    usecase "Tocar Som" as UC7
+    usecase "Visualizar Imagem" as UC8
+    usecase "Navegar entre Categorias" as UC9
+    usecase "Voltar ao Menu" as UC10
+    usecase "Configurar Volume" as UC11
+    usecase "Ajustar Tamanho da Fonte" as UC12
+    usecase "Personalizar Cores" as UC13
+    usecase "Salvar Progresso" as UC14
+    usecase "Gerar Relatório de Uso" as UC15
+    usecase "Adicionar Novo Conteúdo" as UC16
+    usecase "Modificar Categorias" as UC17
+}
+
+' Relacionamentos da Criança
+CRIANCA --> UC1
+CRIANCA --> UC2
+CRIANCA --> UC3
+CRIANCA --> UC4
+CRIANCA --> UC5
+CRIANCA --> UC6
+CRIANCA --> UC7
+CRIANCA --> UC8
+CRIANCA --> UC9
+CRIANCA --> UC10
+CRIANCA --> UC11
+CRIANCA --> UC12
+CRIANCA --> UC13
+
+' Relacionamentos do Professor/Terapeuta
+PROFESSOR --> UC1
+PROFESSOR --> UC2
+PROFESSOR --> UC3
+PROFESSOR --> UC4
+PROFESSOR --> UC5
+PROFESSOR --> UC6
+PROFESSOR --> UC7
+PROFESSOR --> UC8
+PROFESSOR --> UC9
+PROFESSOR --> UC10
+PROFESSOR --> UC11
+PROFESSOR --> UC12
+PROFESSOR --> UC13
+PROFESSOR --> UC14
+PROFESSOR --> UC15
+PROFESSOR --> UC16
+PROFESSOR --> UC17
+
+' Relacionamentos do Familiar/Cuidador
+FAMILIAR --> UC1
+FAMILIAR --> UC2
+FAMILIAR --> UC3
+FAMILIAR --> UC4
+FAMILIAR --> UC5
+FAMILIAR --> UC6
+FAMILIAR --> UC7
+FAMILIAR --> UC8
+FAMILIAR --> UC9
+FAMILIAR --> UC10
+FAMILIAR --> UC11
+FAMILIAR --> UC12
+FAMILIAR --> UC13
+FAMILIAR --> UC14
+
+' Relacionamentos de inclusão
+UC2 ..> UC7 : <<include>>
+UC2 ..> UC8 : <<include>>
+UC3 ..> UC7 : <<include>>
+UC3 ..> UC8 : <<include>>
+UC4 ..> UC7 : <<include>>
+UC4 ..> UC8 : <<include>>
+UC5 ..> UC7 : <<include>>
+UC5 ..> UC8 : <<include>>
+UC6 ..> UC7 : <<include>>
+UC6 ..> UC8 : <<include>>
+
+' Relacionamentos de extensão
+UC9 ..> UC10 : <<extend>>
+UC16 ..> UC17 : <<extend>>
+
+note right of UC6
+  Nova funcionalidade
+  implementada na
+  versão 2.0
+end note
+
+note right of UC15
+  Funcionalidade
+  para acompanhamento
+  terapêutico
+end note
+
+@enduml 

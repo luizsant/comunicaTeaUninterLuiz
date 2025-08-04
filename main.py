@@ -1,6 +1,6 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
-from screens import MenuScreen, AnimalScreen, EmotionScreen, FoodScreen, ClothesScreen
+from screens import MenuScreen, AnimalScreen, EmotionScreen, FoodScreen, ClothesScreen, ObjectsScreen, ProgressScreen
 from kivy.config import Config
 
 # Configuração do tamanho da janela
@@ -15,6 +15,8 @@ class ComunicaTEAApp(App):
         sm.add_widget(EmotionScreen(name='emotion_screen'))
         sm.add_widget(FoodScreen(name='food_screen'))
         sm.add_widget(ClothesScreen(name='clothes_screen'))
+        sm.add_widget(ObjectsScreen(name='objects_screen'))
+        sm.add_widget(ProgressScreen(name='progress_screen'))
         return sm
 
 if __name__ == "__main__":

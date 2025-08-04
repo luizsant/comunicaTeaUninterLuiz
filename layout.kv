@@ -1,185 +1,377 @@
+# Layout do ComunicaTEA - Versão Limpa e Simples
+# Sem sobreposições, design moderno
+
 <AnimalButton>:
     size_hint: None, None
     size: 130, 130
     background_normal: ''
-    background_color: 0, 0, 0, 0
+    background_color: 0.2, 0.8, 0.6, 1
+    on_press: root.play_sound_and_animate()
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.6, 0.4, 1
+        RoundedRectangle:
+            pos: self.x + 3, self.y - 3
+            size: self.size
+            radius: [20,]
     Image:
         source: root.image_source
         center_x: self.parent.center_x
         center_y: self.parent.center_y
+        size: 110, 110
+        fit_mode: 'contain'
 
 <MenuScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.05, 0.1, 0.2, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
     BoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
-        canvas.before:
-            Color:
-                rgba: 0.7, 0.9, 1, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        
         Image:
             source: 'img/logo.png'
             size_hint_y: None
             height: 150
+        
         Label:
             text: 'ComunicaTEA'
             font_size: '24sp'
             bold: True
-            color: 1, 0.5, 0, 1
+            color: 1, 0.9, 0.3, 1
             size_hint_y: None
             height: 50
+        
         Button:
             text: 'Animais'
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.6, 1, 1
+            background_normal: ''
+            background_color: 0.3, 0.8, 0.6, 1
+            font_size: '18sp'
+            bold: True
+            color: 1, 1, 1, 1
             on_press: root.manager.current = 'animal_screen'
+        
         Button:
             text: 'Emoções'
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.6, 1, 1
+            background_normal: ''
+            background_color: 0.9, 0.4, 0.7, 1
+            font_size: '18sp'
+            bold: True
+            color: 1, 1, 1, 1
             on_press: root.manager.current = 'emotion_screen'
+        
         Button:
             text: 'Comidas'
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.6, 1, 1
+            background_normal: ''
+            background_color: 0.4, 0.8, 0.3, 1
+            font_size: '18sp'
+            bold: True
+            color: 1, 1, 1, 1
             on_press: root.manager.current = 'food_screen'
+        
         Button:
             text: 'Roupas'
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.6, 1, 1
+            background_normal: ''
+            background_color: 0.8, 0.5, 0.2, 1
+            font_size: '18sp'
+            bold: True
+            color: 1, 1, 1, 1
             on_press: root.manager.current = 'clothes_screen'
-
-<MainScreen>:
-    orientation: 'vertical'
-    padding: 10
-    spacing: 10
+        
+        Button:
+            text: 'Objetos do Cotidiano'
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: 0.6, 0.3, 0.8, 1
+            font_size: '18sp'
+            bold: True
+            color: 1, 1, 1, 1
+            on_press: root.manager.current = 'objects_screen'
+        
+        Button:
+            text: 'Ver Progresso'
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: 0.2, 0.6, 0.8, 1
+            font_size: '18sp'
+            bold: True
+            color: 1, 1, 1, 1
+            on_press: root.manager.current = 'progress_screen'
 
 <AnimalScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.05, 0.15, 0.3, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
     BoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
-        canvas.before:
-            Color:
-                rgba: 0.7, 0.9, 1, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        
         Label:
             text: 'Animais'
             font_size: '24sp'
             bold: True
-            color: 1, 0.5, 0, 1
+            color: 1, 0.9, 0.3, 1
             size_hint_y: None
             height: 50
-        GridLayout:
-            id: layout
-            cols: 2
-            spacing: 10
+        
+        FloatLayout:
             size_hint_y: None
-            height: self.minimum_height
+            height: 300
+            
+            GridLayout:
+                id: layout
+                cols: 2
+                spacing: 15
+                size_hint: None, None
+                size: 280, 280
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
         Button:
             text: 'Voltar ao Menu'
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.6, 1, 1
+            background_normal: ''
+            background_color: 0.3, 0.6, 1, 1
+            font_size: '16sp'
+            bold: True
+            color: 1, 1, 1, 1
             on_press: root.manager.current = 'menu'
 
 <EmotionScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.3, 0.05, 0.15, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
     BoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
-        canvas.before:
-            Color:
-                rgba: 0.7, 0.9, 1, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        
         Label:
             text: 'Emoções'
             font_size: '24sp'
             bold: True
-            color: 1, 0.5, 0, 1
+            color: 1, 0.9, 0.3, 1
             size_hint_y: None
             height: 50
-        GridLayout:
-            id: layout
-            cols: 2
-            spacing: 10
+        
+        FloatLayout:
             size_hint_y: None
-            height: self.minimum_height
+            height: 300
+            
+            GridLayout:
+                id: layout
+                cols: 2
+                spacing: 15
+                size_hint: None, None
+                size: 280, 280
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
         Button:
             text: 'Voltar ao Menu'
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.6, 1, 1
+            background_normal: ''
+            background_color: 0.3, 0.6, 1, 1
+            font_size: '16sp'
+            bold: True
+            color: 1, 1, 1, 1
             on_press: root.manager.current = 'menu'
 
 <FoodScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.05, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
     BoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
-        canvas.before:
-            Color:
-                rgba: 0.7, 0.9, 1, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        
         Label:
             text: 'Comidas'
             font_size: '24sp'
             bold: True
-            color: 1, 0.5, 0, 1
+            color: 1, 0.9, 0.3, 1
             size_hint_y: None
             height: 50
-        GridLayout:
-            id: layout
-            cols: 2
-            spacing: 10
+        
+        FloatLayout:
             size_hint_y: None
-            height: self.minimum_height
+            height: 300
+            
+            GridLayout:
+                id: layout
+                cols: 2
+                spacing: 15
+                size_hint: None, None
+                size: 280, 280
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
         Button:
             text: 'Voltar ao Menu'
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.6, 1, 1
+            background_normal: ''
+            background_color: 0.3, 0.6, 1, 1
+            font_size: '16sp'
+            bold: True
+            color: 1, 1, 1, 1
             on_press: root.manager.current = 'menu'
 
 <ClothesScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.3, 0.15, 0.05, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
     BoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
-        canvas.before:
-            Color:
-                rgba: 0.7, 0.9, 1, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        
         Label:
             text: 'Roupas'
             font_size: '24sp'
             bold: True
-            color: 1, 0.5, 0, 1
+            color: 1, 0.9, 0.3, 1
             size_hint_y: None
             height: 50
-        GridLayout:
-            id: layout
-            cols: 2
-            spacing: 10
+        
+        FloatLayout:
             size_hint_y: None
-            height: self.minimum_height
+            height: 300
+            
+            GridLayout:
+                id: layout
+                cols: 2
+                spacing: 15
+                size_hint: None, None
+                size: 280, 280
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
         Button:
             text: 'Voltar ao Menu'
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.6, 1, 1
+            background_normal: ''
+            background_color: 0.3, 0.6, 1, 1
+            font_size: '16sp'
+            bold: True
+            color: 1, 1, 1, 1
             on_press: root.manager.current = 'menu'
+
+<ObjectsScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.05, 0.3, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        
+        Label:
+            text: 'Objetos do Cotidiano'
+            font_size: '24sp'
+            bold: True
+            color: 1, 0.9, 0.3, 1
+            size_hint_y: None
+            height: 50
+        
+        FloatLayout:
+            size_hint_y: None
+            height: 300
+            
+            GridLayout:
+                id: layout
+                cols: 2
+                spacing: 15
+                size_hint: None, None
+                size: 280, 280
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
+        Button:
+            text: 'Voltar ao Menu'
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: 0.3, 0.6, 1, 1
+            font_size: '16sp'
+            bold: True
+            color: 1, 1, 1, 1
+            on_press: root.manager.current = 'menu' 
+
+<ProgressScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.1, 0.2, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        
+        Label:
+            text: 'Progresso'
+            font_size: '24sp'
+            bold: True
+            color: 1, 0.9, 0.3, 1
+            size_hint_y: None
+            height: 50
+        
+        ScrollView:
+            size_hint_y: 1
+            
+            BoxLayout:
+                id: progress_layout
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 5
+                padding: 10
+        
+        Button:
+            text: 'Voltar ao Menu'
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: 0.3, 0.6, 1, 1
+            font_size: '16sp'
+            bold: True
+            color: 1, 1, 1, 1
+            on_press: root.manager.current = 'menu' 
